@@ -5,7 +5,7 @@
 <tr><td><img src="before.png"></td><td><img src="after.png"></td></tr>
 </table>
 <h2>how to use</h2>
-<div>I have <code>gtk-3-no-portal-cheat.so</code> in <code>/home/asd/a</code> folder and I want <code>org.gimp.GIMP.Nightly</code> flatpak to not use portals.</div>
+<div>I have <a href="https://gitlab.gnome.org/BZZZZ/gtk-3-no-portal-cheat/-/blob/bin/gtk-3-no-portal-cheat.so"><code>gtk-3-no-portal-cheat.so</code></a> in <code>/home/asd/a</code> folder and I want <code>org.gimp.GIMP.Nightly</code> flatpak to not use portals.</div>
 <hr>
 <div>if you want <i>gtk-3-no-portal-cheat</i> by default:</div>
 <ul><li>run<pre>flatpak override --user --filesystem=/home/asd/a/gtk-3-no-portal-cheat.so:ro --env=LD_AUDIT=/home/asd/a/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly</pre></li></ul>
