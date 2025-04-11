@@ -1,0 +1,4 @@
+{
+global:la_*;
+local:*;
+};
