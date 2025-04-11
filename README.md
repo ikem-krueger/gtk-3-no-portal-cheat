@@ -15,6 +15,7 @@
 <ul><li>run<pre>flatpak run --filesystem=/home/asd/a/gtk-3-no-portal-cheat.so:ro --env=LD_AUDIT=/home/asd/a/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly</pre></li></ul>
 <h2>how to compile</h2>
 <div>I have repository files in <code>/home/asd/a</code> folder.</div>
+<hr>
 <ol>
 <li>install <a href="https://flathub.org/apps/org.freedesktop.Sdk"><code>org.freedesktop.Sdk</code> flatpak</a></li>
 <li>run<pre>flatpak run --filesystem=/home/asd/a --cwd=/home/asd/a org.freedesktop.Sdk build.sh</pre>(this creates <code>/home/asd/a/gtk-3-no-portal-cheat.so</code> file)</li>
