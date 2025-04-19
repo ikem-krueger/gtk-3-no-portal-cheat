@@ -1,4 +1,7 @@
 {
-global:la_*;
-local:*;
+global: la_*;
+/*     ↑
+    these spaces are needed for lld linker
+      ↓ */
+local: *;
 };
