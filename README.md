@@ -1,22 +1,67 @@
-<h1>gtk-3-no-portal-cheat</h1>
-<div>make gtk 3 not use <a href="https://wiki.archlinux.org/title/XDG_Desktop_Portal?useskin=vector">portals</a> for dialogs</div>
-<table>
-<tr><th>before</th><th>after</th></tr>
-<tr><td><img src="before.png"></td><td><img src="after.png"></td></tr>
-</table>
-<h2>how to use</h2>
-<div>I have <a href="https://gitlab.gnome.org/BZZZZ/gtk-3-no-portal-cheat/-/blob/bin/gtk-3-no-portal-cheat.so"><code>gtk-3-no-portal-cheat.so</code></a> in <code>/home/asd/a</code> folder and I want <code>org.gimp.GIMP.Nightly</code> flatpak to not use portals.</div>
-<hr>
-<div>if you want <i>gtk-3-no-portal-cheat</i> by default:</div>
-<ul><li>run<pre>flatpak override --user --filesystem=/home/asd/a/gtk-3-no-portal-cheat.so:ro --env=LD_AUDIT=/home/asd/a/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly</pre></li></ul>
-<div>if you don't want <i>gtk-3-no-portal-cheat</i>:</div>
-<ul><li>(this resets all <code>org.gimp.GIMP.Nightly</code> flatpak overrides if they exist, for granular override editing use <a href="https://flathub.org/apps/com.github.tchx84.Flatseal"><i>flatseal</i></a>)<br>run<pre>flatpak override --user --reset org.gimp.GIMP.Nightly</pre></li></ul>
-<div>if you want <i>gtk-3-no-portal-cheat</i> once:</div>
-<ul><li>run<pre>flatpak run --filesystem=/home/asd/a/gtk-3-no-portal-cheat.so:ro --env=LD_AUDIT=/home/asd/a/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly</pre></li></ul>
-<h2>how to compile</h2>
-<div>I have repository files in <code>/home/asd/a</code> folder.</div>
-<hr>
-<ol>
-<li>install <a href="https://flathub.org/apps/org.freedesktop.Sdk"><code>org.freedesktop.Sdk</code> flatpak</a></li>
-<li>run<pre>flatpak run --filesystem=/home/asd/a --cwd=/home/asd/a org.freedesktop.Sdk build.sh</pre>(this creates <code>/home/asd/a/gtk-3-no-portal-cheat.so</code> file)</li>
-</ol>
+# gtk-3-no-portal-cheat
+
+Make GTK 3 not use portals for dialogs.
+
+## Preview
+
+| before                | after               |
+| --------------------- | ------------------- |
+| ![before](before.png) | ![after](after.png) |
+
+
+## How to compile
+
+### Steps
+
+0. Clone this repository:
+
+```bash
+git clone https://gitlab.gnome.org/ikem-krueger/gtk-3-no-portal-cheat
+cd gtk-3-no-portal-cheat
+```
+
+1. Install [Flatpak SDK](https://flathub.org/apps/org.freedesktop.Sdk):
+
+```bash
+flatpak install org.freedesktop.Sdk
+```
+
+2. Build:
+
+```bash
+flatpak run --filesystem=$PWD --cwd=$PWD org.freedesktop.Sdk build.sh
+```
+
+This creates `gtk-3-no-portal-cheat.so`.
+
+3. Install:
+
+```bash
+mkdir -p $HOME/.local/lib
+mv gtk-3-no-portal-cheat.so $HOME/.local/lib
+```
+
+## How to use
+
+### One-time use
+
+```bash
+flatpak run --env=LD_AUDIT=$HOME/.local/lib/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly
+```
+
+### Enable by default
+
+```bash
+flatpak override --user --env=LD_AUDIT=$HOME/.local/lib/gtk-3-no-portal-cheat.so org.gimp.GIMP.Nightly
+```
+
+### Reset / disable
+
+This resets all overrides for `org.gimp.GIMP.Nightly`.
+
+```bash
+flatpak override --user --reset org.gimp.GIMP.Nightly
+```
+
+For fine-grained control use [Flatseal](https://flathub.org/apps/com.github.tchx84.Flatseal).
+
