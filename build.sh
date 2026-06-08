@@ -9,7 +9,7 @@ exec gcc \
 -fno-plt \
 -fpic \
 -g0 \
--fuse-ld=gold \
+-fuse-ld=bfd \
 -Xlinker --build-id=none \
 -Xlinker --hash-style=gnu \
 -Xlinker -znow \
